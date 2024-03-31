@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+* , *::after , *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.task-tracker-container {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  min-height: 100vh;
+  min-width: 100vw;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* background-color: rgb(8, 0, 22); */
+}
+
+.task-tracker-container .task-tracker-heading {
+  color: white;
+  font-size: 3rem;
+}
+
+
+/* New-Task-Form */
+
+.new-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 0 5px black;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+.new-task-form:hover {  
+  background-color: aliceblue;
+}
+
+.new-task-form .input-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.new-task-form .input-box label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(59, 58, 58);
+  width: 20%;
+}
+
+.new-task-form input , .new-task-form button {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px black;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: center;
+  flex: 1;
+}
+
+.new-task-form input:focus {
+  background-color: rgb(231, 227, 255);
+}
+.new-task-form button {
+  background-color: rgb(179, 179, 180);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.new-task-form button:hover {
+  background-color: green;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.new-task-form button:active {
+  background-color: rgb(79, 3, 129);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.new-task-form .input-box select  {
+  font-size: 1rem;
+  height: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px black;
+  flex: 1;
 }
+
+.new-task-form .input-box select option {
+  text-align: center;
+}
+
+/* New-Task-Form */
+
+
+
+
+/* Task-Card */
+
+.task-card {
+  background: white;
+  min-width: 500px;
+}
+
+.disabled input , .disabled select {  
+  pointer-events: none;
+}
+
+/* Task-Card */

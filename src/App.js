@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from 'react';
+import TaskForm from './components/TaskForm';
+import './App.css'
+import TaskCard from './components/TaskCard';
+import Pendings from './components/Pendings';
+import Progressings from './components/Progressings';
+import Completeds from './components/Completeds';
+import Deployeds from './components/Deployeds';
+import Deferreds from './components/Deferreds';
 
-function App() {
+let t1 = [
+  {
+    title:"Login Page",
+    description:"a full stack student login web page",
+    taskStatus:"pending",
+    priority:"P1",
+    assigneeName:"Tom Morphy"
+  }
+]
+
+export default function App() {
+  const [pendings , setPendings] = useState(t1);
+  const [inProgress , setInProgress] = useState();
+  const [completeds , setCompleteds] = useState();
+  const [deployeds , setDeployeds] = useState();
+  const [deferreds , setDeferreds] = useState();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className='task-tracker-container'>
+      <h1 className="task-tracker-heading">Task Tracker App</h1>
+      <TaskForm />
+      <TaskCard />
 
-export default App;
+      <Pendings tasks={pendings} />
+      <Progressings tasks={inProgress}  />
+      <Completeds tasks={completeds}  />
+      <Deployeds tasks={deployeds} />
+      <Deferreds tasks={deferreds} />
+    </div>
+  )
+}
