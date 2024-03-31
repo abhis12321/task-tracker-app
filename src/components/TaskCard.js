@@ -9,7 +9,7 @@ export default function TaskCard(props) {
     const [assigneeName, setAssigneeName] = useState("assignee name");
 
     useEffect(() => {        
-        let { title = "title", description = "description", taskStatus = "pending", priority = "P0", assigneeName = "assignee name" , startDate="dd-mm-yyyy" , endDate="dd-mm-yyyy" } = props?.task ? props.task : {};
+        let { title = "title", description = "description", taskStatus = "pending", assigneeName = "assignee name" , startDate="dd-mm-yyyy" , endDate="dd-mm-yyyy" } = props?.task ? props.task : {};
         setTitle(title);
         setDescription(description);
         setTaskStatus(taskStatus);
@@ -24,13 +24,12 @@ export default function TaskCard(props) {
             <div className="taskCard">
                 <div className="task-info">
                     <h3 className="title">{title}</h3>
-                    {/* <p className="status">({taskStatus})</p> */}
                 </div>
 
                 <p className="description">{description}</p>
-                <p className="assignee"><span>___assigned by </span>{assigneeName}</p>
                
                 <button className='task-delete' onClick={props.handleDelete}>delete</button>
+                
                 <div className="task-info">
                     <p className="status">start-date : <span>{startDate}</span></p>
                     {
@@ -39,6 +38,7 @@ export default function TaskCard(props) {
                     }
                 </div>
 
+                <p className="assignee"><span>___assigned by </span>{assigneeName}</p>
             </div>
         </>
     )

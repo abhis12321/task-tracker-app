@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import TaskForm from './components/TaskForm';
 import './App.css'
 import Pendings from './components/Pendings';
@@ -11,6 +11,8 @@ let t1 = [
   {
     title:"Login Page",
     description:"a full stack student login web page",
+    startDate:"2024-02-31",
+    endDate:"2024-03-01",
     taskStatus:"pending",
     priority:"P1",
     assigneeName:"Tom Morphy"
@@ -20,10 +22,23 @@ let t1 = [
 export default function App() {
   const [showForm , setShowForm] = useState(false);
   const [pendings , setPendings] = useState(t1);
-  const [inProgress , setInProgress] = useState([]);
-  const [completeds , setCompleteds] = useState([]);
-  const [deployeds , setDeployeds] = useState([]);
-  const [deferreds , setDeferreds] = useState([]);
+  const [inProgress , setInProgress] = useState([t1]);
+  const [completeds , setCompleteds] = useState([t1]);
+  const [deployeds , setDeployeds] = useState([t1]);
+  const [deferreds , setDeferreds] = useState([t1]);
+
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("task-tracking"));
+    setPendings(data.pendings);
+    setInProgress(data.inProgress);
+    setCompleteds(data.completeds);
+    setDeployeds(data.deployeds);
+    setDeferreds(data.deferreds);
+  } , []);
+
+  useEffect(() => {    
+    localStorage.setItem('task-tracking' , JSON.stringify({pendings , inProgress , completeds , deployeds , deferreds}));
+  } , [completeds, deferreds, deployeds, inProgress, pendings]);
 
   const handleNewTask = (task) => {
     setShowForm(false);
@@ -31,21 +46,21 @@ export default function App() {
     switch(status) {
       case "pending":
         setPendings([...pendings , task]);
-        return;
+        break;
       case "in-progress":
         setInProgress([...inProgress , task]);
-        return;
+        break;
       case "completed":
         setCompleteds([...completeds , task]);
-        return;
+        break;
       case "deployed":
         setDeployeds([...deployeds , task]);
-        return;
+        break;
       case "deferred":
         setDeferreds([...deferreds , task]);
-        return;
+        break;
       default:
-        return;
+        break;
     }
   }
 
