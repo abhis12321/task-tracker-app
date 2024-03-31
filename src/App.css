@@ -11,7 +11,7 @@ body {
 .task-tracker-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   min-height: 100vh;
   min-width: 100vw;
   align-items: center;
@@ -20,10 +20,39 @@ body {
 }
 
 .task-tracker-container .task-tracker-heading {
-  color: white;
   font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
+  padding-top: 1rem;
 }
 
+
+
+/* NEW-TASK-BUTTON */
+/* NEW-TASK-BUTTON */
+
+  .task-tracker-container .new-task-btn {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(3, 153, 3);
+  }
+
+  .task-tracker-container .new-task-btn:hover {
+    color: black;
+    background-color: rgb(240, 255, 242);
+  }
+  .task-tracker-container .new-task-btn:active {
+    color: white;
+    background-color: rgb(2, 71, 2);
+  }
+
+/* NEW-TASK-BUTTON */
+/* NEW-TASK-BUTTON */
 
 /* New-Task-Form */
 
@@ -105,15 +134,127 @@ body {
 
 
 
-/* Task-Card */
 
-.task-card {
-  background: white;
-  min-width: 500px;
+  .status-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: auto;
+  }
+
+  .tasks-container-statuswise {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    box-shadow: 0 0 5px black;
+    border-radius: 1rem;
+    min-width: 400px;
+    min-height: 179px;
+  }
+
+  .tasks-container-statuswise h1 {
+    color: rgb(41, 3, 3);
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+
+
+/* TASK_CARD */
+/* TASK_CARD */
+
+.taskCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 3px black;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 1rem;
+  position: relative;
+  gap: 10px;
+  width: 100%;
 }
 
-.disabled input , .disabled select {  
-  pointer-events: none;
+.taskCard .task-info {
+  display: flex;
+  gap: 5px;
+}
+.taskCard .task-info .title {
+  color: rgba(0, 0, 0, 0.711);
+}
+.taskCard .task-info p {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(43, 6, 6, 0.7);
+}
+.taskCard .task-info p span {
+  font-size: 12px;
+  color: rgba(43, 6, 6, 0.7);
+}
+.taskCard .description {
+  color: rgb(76, 74, 74);
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-/* Task-Card */
+.taskCard .assignee {
+  font-size: 14px;
+  font-weight: 600;
+  justify-self: end;
+  align-self: flex-end;
+}
+.taskCard .assignee span {
+  color: rgb(76, 74, 74);
+  font-size: 13px;
+}
+
+.taskCard .task-delete {
+  position: absolute;
+  right: 10px;
+  outline: none;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  color: red;
+  font-weight: 600;
+  background: local;
+}
+
+
+.taskCard .task-delete:hover {
+  color: white;
+  background-color: red;
+  box-shadow: 0 0 5px black;
+}
+.taskCard .task-delete:active {
+  background-color: rgb(111, 3, 3);
+}
+/* TASK_CARD */
+/* TASK_CARD */
+
+
+
+
+/* SORTING_BOX */
+/* SORTING_BOX */
+
+.sorting-option  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.sorting-option .status-option:active {
+  background-color: rgb(3, 153, 3);;
+}
+
+/* SORTING_BOX */
+/* SORTING_BOX */
