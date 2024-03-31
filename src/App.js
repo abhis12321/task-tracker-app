@@ -16,24 +16,62 @@ let t1 = [
     taskStatus:"pending",
     priority:"P1",
     assigneeName:"Tom Morphy"
-  }
+  },
+  {
+    title:"Login Page",
+    description:"a full stack student login web page",
+    startDate:"2024-02-31",
+    endDate:"2024-03-01",
+    taskStatus:"in-progress",
+    priority:"P1",
+    assigneeName:"Tom Morphy"
+  },
+  {
+    title:"Login Page",
+    description:"a full stack student login web page",
+    startDate:"2024-02-31",
+    endDate:"2024-03-01",
+    taskStatus:"completed",
+    priority:"P1",
+    assigneeName:"Tom Morphy"
+  },
+  {
+    title:"Login Page",
+    description:"a full stack student login web page",
+    startDate:"2024-02-31",
+    endDate:"2024-03-01",
+    taskStatus:"deployed",
+    priority:"P1",
+    assigneeName:"Tom Morphy"
+  },
+  {
+    title:"Login Page",
+    description:"a full stack student login web page",
+    startDate:"2024-02-31",
+    endDate:"2024-03-01",
+    taskStatus:"deferred",
+    priority:"P1",
+    assigneeName:"Tom Morphy"
+  },
 ]
 
 export default function App() {
   const [showForm , setShowForm] = useState(false);
-  const [pendings , setPendings] = useState(t1);
-  const [inProgress , setInProgress] = useState([t1]);
-  const [completeds , setCompleteds] = useState([t1]);
-  const [deployeds , setDeployeds] = useState([t1]);
-  const [deferreds , setDeferreds] = useState([t1]);
+  const [pendings , setPendings] = useState([t1[0]]);
+  const [inProgress , setInProgress] = useState([t1[1]]);
+  const [completeds , setCompleteds] = useState([t1[2]]);
+  const [deployeds , setDeployeds] = useState([t1[3]]);
+  const [deferreds , setDeferreds] = useState([t1[4]]);
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("task-tracking"));
-    setPendings(data.pendings);
-    setInProgress(data.inProgress);
-    setCompleteds(data.completeds);
-    setDeployeds(data.deployeds);
-    setDeferreds(data.deferreds);
+    if(data) {
+      setPendings(data.pendings);
+      setInProgress(data.inProgress);
+      setCompleteds(data.completeds);
+      setDeployeds(data.deployeds);
+      setDeferreds(data.deferreds);
+    }
   } , []);
 
   useEffect(() => {    
@@ -112,12 +150,12 @@ export default function App() {
   return (
     <div className='task-tracker-container'>
       <h1 className="task-tracker-heading">Task Tracker App</h1>
+      {/* <button onClick={e => localStorage.removeItem("task-tracking")}>clear</button> */}
       
       {showForm && <TaskForm addNewTask = {handleNewTask} />}
 
       <div className="sorting-option">
         <button onClick={e => setShowForm(true)} className='new-task-btn'>Add New Task</button>
-        {/* <label htmlFor="status" className="status">Sort Tasks</label> */}
         <select name="status" id="" className="status-option new-task-btn" onChange={handleSort} >
             <option value="0">sort-by-start-date</option>
             <option value="1">sort-by-end-date</option>

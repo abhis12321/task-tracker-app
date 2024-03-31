@@ -29,7 +29,7 @@ export default function TaskCard(props) {
                 <p className="description">{description}</p>
                
                 <button className='task-delete' onClick={props.handleDelete}>delete</button>
-                
+
                 <div className="task-info">
                     <p className="status">start-date : <span>{startDate}</span></p>
                     {

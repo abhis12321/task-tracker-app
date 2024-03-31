@@ -32,27 +32,30 @@ export default function Taskform(props) {
     return (
         <>
             <form className='new-task-form' onSubmit={handleUpdateSubmit}>
+                <h2 className="new-task-heading">Enter Data To Add New Task</h2>
                 <div className="input-box">
                     <label htmlFor="task-title">title</label>
-                    <input type="text" name='task-title' className="task-title" value={title} onChange={e => setTitle(e.target.value)} required />
+                    <input type="text" name='task-title' className="task-input" value={title} onChange={e => setTitle(e.target.value)} required />
                 </div>
 
                 <div className="input-box">
                     <label htmlFor="task-description">description</label>
-                    <input type="text" name='task-description' className="task-description" onChange={e => setDescription(e.target.value)} value={description} required />
+                    <textarea type="text" name="task-description"  className="task-input" id="" cols="30" rows="10"onChange={e => setDescription(e.target.value)} value={description} required ></textarea>
+                    {/* <input  name='' className="task-description"  /> */}
+                    {/* <input type="text" name='task-description' className="task-description" onChange={e => setDescription(e.target.value)} value={description} required /> */}
                 </div>
                 
 
                 <div className="input-box">
                     <label htmlFor="start-date">start-date</label>
-                    <input type="text" name='start-date' className="task-description" value={startDate} disabled />
+                    <input type="text" name='start-date' className="task-input" value={startDate} disabled />
                 </div>
                 
                 {
                     (taskStatus === "completed") &&
                     <div className="input-box">
                         <label htmlFor="end-date">end-date</label>
-                        <input type="date" name='end-date' className="task-description" onChange={e => setEndDate(e.target.value)} value={endDate} required />
+                        <input type="date" name='end-date' className="task-input" onChange={e => setEndDate(e.target.value)} value={endDate} required />
                     </div>
                 }
                 
@@ -69,7 +72,7 @@ export default function Taskform(props) {
 
                 <div className="input-box">
                     <label htmlFor="assignee-name">assignee</label>
-                    <input  type="text" name='assignee-name' className="assignee-name" value={assigneeName} onChange={e => setAssigneeName(e.target.value)} required />
+                    <input  type="text" name='assignee-name' className="task-input" value={assigneeName} onChange={e => setAssigneeName(e.target.value)} required />
                 </div>
 
                 <div className="task-priority input-box">
