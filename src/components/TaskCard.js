@@ -40,7 +40,7 @@ export default function TaskCard(props) {
                             <div className='delete-cant'>
                                 <p>Are you sure , You wanna delete this task</p>
                                 <div className="confirm">
-                                    <button className='task-delete' onClick={props.handleDelete}>Yes</button>
+                                    <button className='task-delete' onClick={e => {setShowWrning(false) ; props.handleDelete()}}>Yes</button>
                                     <button onClick={e => setShowWrning(false)} className='task-not-delete'>No</button>
                                 </div>
                             </div>
