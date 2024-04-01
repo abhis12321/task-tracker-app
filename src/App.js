@@ -10,7 +10,7 @@ import Deferreds from './components/Deferreds';
 let t1 = [
   {
     title:"Login Page",
-    description:"a full stack student login web page",
+    description:"a full stack student login web page Lorem ipsum dolor sit, amet consectetur adipisicing elit. At labore tenetur fugiat pariatur. Reprehenderit voluptas maiores ratione, quia suscipit soluta laboriosam officia aspernatur, eveniet corrupti deleni",
     startDate:"2024-02-31",
     endDate:"2024-03-01",
     taskStatus:"pending",
@@ -19,7 +19,7 @@ let t1 = [
   },
   {
     title:"Login Page",
-    description:"a full stack student login web page",
+    description:"a full stack student login web page Lorem ipsum dolor sit, amet consectetur adipisicing elit. At labore tenetur fugiat pariatur. Reprehenderit voluptas maiores ratione, quia suscipit soluta laboriosam officia aspernatur, eveniet corrupti deleni",
     startDate:"2024-02-31",
     endDate:"2024-03-01",
     taskStatus:"in-progress",
@@ -28,7 +28,7 @@ let t1 = [
   },
   {
     title:"Login Page",
-    description:"a full stack student login web page",
+    description:"a full stack student login web page Lorem ipsum dolor sit, amet consectetur adipisicing elit. At labore tenetur fugiat pariatur. Reprehenderit voluptas maiores ratione, quia suscipit soluta laboriosam officia aspernatur, eveniet corrupti deleni",
     startDate:"2024-02-31",
     endDate:"2024-03-01",
     taskStatus:"completed",
@@ -37,7 +37,7 @@ let t1 = [
   },
   {
     title:"Login Page",
-    description:"a full stack student login web page",
+    description:"a full stack student login web page Lorem ipsum dolor sit, amet consectetur adipisicing elit. At labore tenetur fugiat pariatur. Reprehenderit voluptas maiores ratione, quia suscipit soluta laboriosam officia aspernatur, eveniet corrupti deleni",
     startDate:"2024-02-31",
     endDate:"2024-03-01",
     taskStatus:"deployed",
@@ -46,7 +46,7 @@ let t1 = [
   },
   {
     title:"Login Page",
-    description:"a full stack student login web page",
+    description:"a full stack student login web page Lorem ipsum dolor sit, amet consectetur adipisicing elit. At labore tenetur fugiat pariatur. Reprehenderit voluptas maiores ratione, quia suscipit soluta laboriosam officia aspernatur, eveniet corrupti deleni",
     startDate:"2024-02-31",
     endDate:"2024-03-01",
     taskStatus:"deferred",
@@ -162,7 +162,6 @@ export default function App() {
             <option value="2">sort-priority</option>
         </select>        
       </div>
-
       <div className="status-columns">
         <Pendings tasks={pendings} handleUpdate={setPendings} />
         <Progressings tasks={inProgress} handleUpdate={setInProgress}  />
