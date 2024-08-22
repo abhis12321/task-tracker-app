@@ -4,6 +4,7 @@ const TaskContext = createContext();
 
 export default function TaskProvider({ children }) {
     const [tasks, setTasks] = useState(Tasks);
+    
     const sortByStartDate = () => {
         tasks.sort((a, b) => a.startDate < b.startDate ? -1 : 1);
         setTasks(tasks);
@@ -32,8 +33,10 @@ export default function TaskProvider({ children }) {
         tasks[index] = task;
         setTasks([...tasks]);
     }
+    
 
     const value = { tasks, setTasks, sortByEndDate, sortByStartDate, sortByPriority, handleNewTask, handleDeleteTask, handleEditTask };
+    
     return (
         <TaskContext.Provider value={value}>
             {children}

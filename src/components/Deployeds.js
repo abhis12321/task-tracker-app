@@ -10,7 +10,7 @@ export default function Deployeds(props) {
       <h1>Deployed</h1>
       
       {
-        tasks?.map((task , index) => <TaskCard key={index} task={task} />)
+        tasks?.map((task , index) => task.taskStatus === "deployed" && <TaskCard key={index} task={task} />)
       }
     </div>
   )

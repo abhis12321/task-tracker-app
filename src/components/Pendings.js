@@ -9,7 +9,7 @@ export default function Pendings() {
     <div className='pending-tasks-container tasks-container-statuswise'>
       <h1>Pending</h1>
       {
-        tasks?.map((task , index) => <TaskCard key={index} task={task} />)
+        tasks?.map((task , index) => task.taskStatus === "pending" && <TaskCard key={index} task={task} />)
       }
     </div>
   )

@@ -9,7 +9,7 @@ export default function Completeds() {
     <div className='completed-tasks-container tasks-container-statuswise'>
       <h1>Completed</h1>
       {
-        tasks?.map((task , index) => <TaskCard key={index} task={task} />)
+        tasks?.map((task , index) => task.taskStatus === "completed" && <TaskCard key={index} task={task} />)
       }
     </div>
   )

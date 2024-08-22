@@ -10,7 +10,7 @@ export default function Progressings() {
       <h1>In-progress</h1>
       
       {
-        tasks?.map((task , index) => <TaskCard key={index} task={task} />)
+        tasks?.map((task , index) => task.taskStatus === "in-progress" && <TaskCard key={index} task={task} />)
       }
     </div>
   )

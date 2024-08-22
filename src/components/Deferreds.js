@@ -10,7 +10,7 @@ export default function Deferreds(props) {
       <h1>Deferred</h1>
       
       {
-        tasks?.map((task , index) =>  <TaskCard key={index} task={task} />)
+        tasks?.map((task , index) => task.taskStatus === "deferred" && <TaskCard key={index} task={task} />)
       }
     </div>
   )
