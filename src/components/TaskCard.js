@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ConfirmDeletion from './ConfirmDeletion';
 
-export default function TaskCard_02({ task }) {
-
+export default function TaskCard({ task, handleDeleteTask }) {
+    const [deleteTask , setDeleteTask] = useState(false);
     return (
-        <div className="taskCard">
+        <div className="taskCard relative">
             <div className="task-info">
                 <h2 className="title">{task.title}</h2>
                 <h3 className="priority">{task.priority}</h3>
@@ -11,13 +12,15 @@ export default function TaskCard_02({ task }) {
             <hr />
             <p className="description">{task.description}</p>
 
-            <p className="task-info">
+            <div className="task-info">
                 <h3 className="name">@{task.assigneeName}</h3>
-            </p>
+            </div>
             <div className="task-info">
                 <button className="edit">edit</button>
-                <button className='task-delete'>delete</button>
+                <button className='task-delete' onClick={() => setDeleteTask(true)}>delete</button>
             </div>
+
+            {deleteTask && <ConfirmDeletion cancelDeleteTask={() => setDeleteTask(false)} handleDeleteTask={handleDeleteTask}/>}
         </div>
     )
 }

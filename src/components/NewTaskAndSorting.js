@@ -9,7 +9,7 @@ export default function NewTaskAndSorting() {
 
     return (
         <>
-            {showForm && <Taskform hideForm={setShowForm} />}
+            {showForm && <Taskform showForm={setShowForm} />}
 
             <div className="sorting-option">
                 <button onClick={e => setShowForm(true)} className='new-task-btn'>Add New Task</button>

@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
+import { useTasks } from './TaskProvider'
 
-export default function Taskform(props) {
-    const { Title = '', Description = '', status = "pending", Priority = "P0", assignee = '' } = props;
-    const [title, setTitle] = useState(Title);
-    const [description, setDescription] = useState(Description);
+export default function Taskform({ showForm}) {
+    const [title, setTitle] = useState("title");
+    const [description, setDescription] = useState("description");
     const [endDate , setEndDate] = useState(currentTime());
-    const [taskStatus, setTaskStatus] = React.useState(status);
-    const [priority, setPriority] = React.useState(Priority);
-    const [assigneeName, setAssigneeName] = useState(assignee);
-
+    const [taskStatus, setTaskStatus] = React.useState("pending");
+    const [priority, setPriority] = React.useState("P0");
+    const [assigneeName, setAssigneeName] = useState("assignee");
+    const { handleNewTask } = useTasks();
     
-    const handleUpdateSubmit = e => {
+    const handleFormSubmit = e => {
         e.preventDefault();
         const startDate = currentTime();
         setTitle(title.trim());
@@ -20,7 +20,8 @@ export default function Taskform(props) {
         if(!title || !description || !assigneeName)  {
             alert("Some fields are empty!");
         } else {
-            props.addNewTask({title , description , taskStatus , priority , assigneeName , startDate:startDate.split('-').reverse().join('-') , endDate});
+            handleNewTask({title , description , taskStatus , priority , assigneeName , startDate:startDate.split('-').reverse().join('-') , endDate});
+            showForm(false);
         }
     }
 
@@ -54,7 +55,7 @@ export default function Taskform(props) {
                 <div className="task-status input-box">
                     <label htmlFor="status" className="status">Status</label>
                     <select name="status" id="" className="status-option"  placeholder='pending' value={taskStatus} onChange={(e) => setTaskStatus(e.target.value)} >
-                        <option value="pending">ending</option>
+                        <option value="pending">pending</option>
                         <option value="in-progress">in-progress</option>
                         <option value="completed">completed</option>
                         <option value="deployed">deployed</option>
@@ -84,8 +85,8 @@ export default function Taskform(props) {
                     </select>
                 </div>
                 <div className="flex">
-                    <button onClick={e => props.hideForm(false)} className='cancel'>cancel</button>
-                    <button onClick={handleUpdateSubmit}>create Task</button>
+                    <button onClick={e => showForm(false)} className='cancel'>cancel</button>
+                    <button onClick={handleFormSubmit}>create Task</button>
                 </div>
             </div>
         </>
