@@ -9,7 +9,6 @@ import TaskProvider from './components/TaskProvider';
 import NewTaskAndSorting from './components/NewTaskAndSorting';
 
 export default function App() {
-
   return (
     <TaskProvider >
       <div className='task-tracker-container'>

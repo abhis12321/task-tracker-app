@@ -67,7 +67,6 @@ body {
   padding: 2rem;
   box-shadow: 0 0 5px black;
   border-radius: 1rem;
-  background-color: white;
 }
 
 .new-task-form:hover {

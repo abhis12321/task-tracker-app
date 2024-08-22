@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { useTasks } from './TaskProvider'
 
-export default function Taskform({ showForm}) {
-    const [title, setTitle] = useState("title");
-    const [description, setDescription] = useState("description");
-    const [endDate , setEndDate] = useState(currentTime());
-    const [taskStatus, setTaskStatus] = React.useState("pending");
-    const [priority, setPriority] = React.useState("P0");
-    const [assigneeName, setAssigneeName] = useState("assignee");
-    const { handleNewTask } = useTasks();
+export default function Taskform({ task,  cancelForm , handleTask}) {
+    const [title, setTitle] = useState(task?.title || "task title");
+    const [description, setDescription] = useState(task?.description || "task description");
+    const [startDate , setStartDate] = useState();
+    const [endDate , setEndDate] = useState(task?.endDate || new Date());
+    const [taskStatus, setTaskStatus] = React.useState(task?.taskStatus || "pending");
+    const [priority, setPriority] = React.useState(task?.priority || "P0");
+    const [assigneeName, setAssigneeName] = useState(task?.assigneeName || "task assignee name");
+
+    console.log("handleTask" , handleTask);
+    
     
     const handleFormSubmit = e => {
         e.preventDefault();
-        const startDate = currentTime();
         setTitle(title.trim());
         setDescription(description.trim());
         setAssigneeName(assigneeName.trim());
@@ -20,28 +21,15 @@ export default function Taskform({ showForm}) {
         if(!title || !description || !assigneeName)  {
             alert("Some fields are empty!");
         } else {
-            handleNewTask({title , description , taskStatus , priority , assigneeName , startDate:startDate.split('-').reverse().join('-') , endDate});
-            showForm(false);
+            handleTask({title , description , taskStatus , priority , assigneeName , startDate:new Date(startDate), endDate:new Date(endDate)});
+            cancelForm(0);
         }
     }
 
-    function addLeadingZero(number) {
-        return (number < 10 ? '0' : '') + number;
-    }
-
-    function currentTime() {
-        let currentDate = new Date();
-        let year = currentDate.getFullYear();
-        let month = currentDate.getMonth() + 1; 
-        let day = currentDate.getDate();        
-        return addLeadingZero(day) + "-" + addLeadingZero(month) + "-" + year ;
-    }
-    
-    
     return (
-        <>
-            <div className='new-task-form'>
-                <h2 className="new-task-heading">Enter New Task Details</h2>
+        <div className='h-[100vh] w-full z-50 fixed top-0 left-0 flex items-center justify-center bg-gray-950/60'>
+            <div className='new-task-form bg-white'>
+                <h2 className="text-2xl font-bold text-center py-2">Enter New Task Details</h2>
                 <div className="input-box">
                     <label htmlFor="task-title">Title</label>
                     <input type="text" name='task-title' className="task-input" placeholder='Enter the title' value={title} onChange={e => setTitle(e.target.value)} required />
@@ -49,7 +37,7 @@ export default function Taskform({ showForm}) {
 
                 <div className="input-box">
                     <label htmlFor="task-description">Description</label>
-                    <textarea type="text" name="task-description"  className="task-input" id="" cols="30" rows="10" placeholder='Enter description' onChange={e => setDescription(e.target.value)} value={description} required></textarea>
+                    <textarea type="text" name="task-description"  className="task-input" id="" cols="30" rows="6" placeholder='Enter description' onChange={e => setDescription(e.target.value)} value={description} required></textarea>
                 </div>
                 
                 <div className="task-status input-box">
@@ -63,6 +51,10 @@ export default function Taskform({ showForm}) {
                     </select>
                 </div>
                 
+                <div className="input-box">
+                        <label htmlFor="end-date">Start-date</label>
+                        <input type="date" name='end-date' className="task-input"  placeholder='Enter expected end date' onChange={e => setStartDate(e.target.value)} value={startDate} required />
+                    </div>
                 {
                     (taskStatus === "completed") &&
                     <div className="input-box">
@@ -85,10 +77,10 @@ export default function Taskform({ showForm}) {
                     </select>
                 </div>
                 <div className="flex">
-                    <button onClick={e => showForm(false)} className='cancel'>cancel</button>
+                    <button onClick={() => cancelForm(0)} className='cancel'>cancel</button>
                     <button onClick={handleFormSubmit}>create Task</button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import ConfirmDeletion from './ConfirmDeletion';
+import Taskform from './TaskForm';
 
-export default function TaskCard({ task, handleDeleteTask }) {
-    const [deleteTask , setDeleteTask] = useState(false);
+export default function TaskCard({ task, handleUpdateTask, handleDeleteTask }) {
+    const [operation, setOperation] = useState(0);
+    console.log("card" , handleUpdateTask);
+    
+    
     return (
         <div className="taskCard relative">
             <div className="task-info">
@@ -16,11 +20,16 @@ export default function TaskCard({ task, handleDeleteTask }) {
                 <h3 className="name">@{task.assigneeName}</h3>
             </div>
             <div className="task-info">
-                <button className="edit">edit</button>
-                <button className='task-delete' onClick={() => setDeleteTask(true)}>delete</button>
+                <button className="edit" onClick={() => setOperation(1)}>edit</button>
+                <button className='task-delete' onClick={() => setOperation(2)}>delete</button>
             </div>
 
-            {deleteTask && <ConfirmDeletion cancelDeleteTask={() => setDeleteTask(false)} handleDeleteTask={handleDeleteTask}/>}
+            {
+                operation === 1 ? <Taskform task={task} cancelForm={setOperation} handleTask={handleUpdateTask}/>
+                    :
+                    operation === 2 && <ConfirmDeletion cancelDeleteTask={() => setOperation(0)} handleDeleteTask={handleDeleteTask} />
+            }
+
         </div>
     )
 }
