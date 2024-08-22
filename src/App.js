@@ -1,27 +1,16 @@
 import React from 'react';
 import './App.css'
-import Pendings from './components/Pendings';
-import Progressings from './components/Progressings';
-import Completeds from './components/Completeds';
-import Deployeds from './components/Deployeds';
-import Deferreds from './components/Deferreds';
 import TaskProvider from './components/TaskProvider';
 import NewTaskAndSorting from './components/NewTaskAndSorting';
+import TaskColumnContainer from './components/TaskColumnContainer';
 
 export default function App() {
   return (
     <TaskProvider >
       <div className='task-tracker-container'>
-        <h1 className="task-tracker-heading">Task Tracker App</h1>
+        <h1 className="text-[2.2rem] sm:text-[3rem] font-bold font-sans text-red-950 py-2">Task Tracker App</h1>
         <NewTaskAndSorting />
-        <div className="status-columns gap-4 p-4">
-          <Pendings />
-          <Progressings />
-          <Completeds />
-          <Deployeds />
-          <Deferreds />
-        </div>
-
+        <TaskColumnContainer />
       </div>
     </TaskProvider>
   )
