@@ -14,7 +14,7 @@ export default function App() {
       <div className='task-tracker-container'>
         <h1 className="task-tracker-heading">Task Tracker App</h1>
         <NewTaskAndSorting />
-        <div className="status-columns">
+        <div className="status-columns gap-4 p-4">
           <Pendings />
           <Progressings />
           <Completeds />

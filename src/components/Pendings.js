@@ -7,9 +7,9 @@ export default function Pendings() {
   
   
   return (
-    <div className='pending-tasks-container tasks-container-statuswise'>
-      <h1>Pending</h1>
-      {
+    <div className='tasks-container-statuswise gap-4 pb-4'>
+      <h1 className='py-3 text-[2.5rem] font-extrabold font-mono w-[100%] bg-gray-600 text-white text-center'>Pending</h1>
+      { 
         tasks?.map((task , index) => task.taskStatus === "pending" && <TaskCard key={index} task={task} handleDeleteTask={() => handleDeleteTask(index)} handleUpdateTask={(task) => handleEditTask(index , task)}/>)
       }
       

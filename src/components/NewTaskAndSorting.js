@@ -16,9 +16,9 @@ export default function NewTaskAndSorting() {
         <>
             {showForm === 1 && <Taskform cancelForm={setShowForm} handleTask={handleNewTask}/>}
 
-            <div className="sorting-option">
-                <button onClick={() => setShowForm(1)} className='new-task-btn'>Add New Task</button>
-                <select name="status" className="status-option new-task-btn" onChange={e => setSortTask([e.target.value])}>
+            <div className="flex gap-4 text-white font-bold text-sm *:rounded-lg *:outline-none">
+                <button onClick={() => setShowForm(1)} className='py-[6px] px-5 bg-green-800 hover:bg-green-600'>add New Task</button>
+                <select name="status" className="py-[6px] px-5 bg-green-800 hover:bg-green-600" onChange={e => setSortTask([e.target.value])}>
                     
                     <option value="0" >sort-by-start-date</option>
                     <option value="1" >sort-by-end-date</option>
