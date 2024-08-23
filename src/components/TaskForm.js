@@ -3,25 +3,22 @@ import React, { useState } from 'react'
 export default function Taskform({ task, cancelForm, handleTask }) {
     const [title, setTitle] = useState(task?.title || "task title");
     const [description, setDescription] = useState(task?.description || "task description");
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState(task?.endDate || new Date());
-    const [taskStatus, setTaskStatus] = React.useState(task?.taskStatus || "pending");
-    const [priority, setPriority] = React.useState(task?.priority || "P0");
+    const [startDate, setStartDate] = useState(task?.startDate);
+    const [endDate, setEndDate] = useState(task?.endDate);
+    const [taskStatus, setTaskStatus] = useState(task?.taskStatus || "pending");
+    const [priority, setPriority] = useState(task?.priority || "P0");
     const [assigneeName, setAssigneeName] = useState(task?.assigneeName || "task assignee name");
-
-    console.log("handleTask", handleTask);
-
 
     const handleFormSubmit = e => {
         e.preventDefault();
         setTitle(title.trim());
         setDescription(description.trim());
         setAssigneeName(assigneeName.trim());
-
+        
         if (!title || !description || !assigneeName) {
             alert("Some fields are empty!");
         } else {
-            handleTask({ title, description, taskStatus, priority, assigneeName, startDate: new Date(startDate), endDate: new Date(endDate) });
+            handleTask({ title, description, taskStatus, priority, assigneeName, startDate, endDate });
             cancelForm(0);
         }
     }

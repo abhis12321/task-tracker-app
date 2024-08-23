@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Tasks } from './Tasks';
 const TaskContext = createContext();
 
@@ -21,18 +21,26 @@ export default function TaskProvider({ children }) {
     }
 
     const handleNewTask = (task) => {
-        setTasks([...tasks , task])
+        setTasks([...tasks , task]);
+        localStorage.setItem("task-tracker" , JSON.stringify([task,...tasks]));
     }
 
     const handleDeleteTask = (index) => {
         tasks.splice(index , 1);
         setTasks([...tasks]);
+        localStorage.setItem("task-tracker" , JSON.stringify(tasks));
     }
 
     const handleEditTask = (index , task) => {
         tasks[index] = task;
         setTasks([...tasks]);
+        localStorage.setItem("task-tracker" , JSON.stringify(tasks));
     }
+
+    useEffect(() => {
+        let prevTasks = JSON.parse(localStorage.getItem("task-tracker"));
+        if(prevTasks)   setTasks(prevTasks);
+    }, []);
     
 
     const value = { tasks, setTasks, sortByEndDate, sortByStartDate, sortByPriority, handleNewTask, handleDeleteTask, handleEditTask };

@@ -26,7 +26,7 @@ export default function TaskCard({ task, handleUpdateTask, handleDeleteTask }) {
             {
                 operation === 1 ? <Taskform task={task} cancelForm={setOperation} handleTask={handleUpdateTask} />
                     :
-                    operation === 2 && <ConfirmDeletion cancelDeleteTask={() => setOperation(0)} handleDeleteTask={handleDeleteTask} />
+                    operation === 2 && <ConfirmDeletion cancelDeleteTask={() => setOperation(0)} confirmDeleteTask={() => {handleDeleteTask(); setOperation(0);}} />
             }
 
         </div>
