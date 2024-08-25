@@ -3,7 +3,7 @@ import { Tasks } from './Tasks';
 const TaskContext = createContext();
 
 export default function TaskProvider({ children }) {
-    const [tasks, setTasks] = useState(Tasks);
+    const [tasks, setTasks] = useState([]);
 
     const sortByStartDate = () => {
         tasks.sort((a, b) => a.startDate < b.startDate ? -1 : 1);
